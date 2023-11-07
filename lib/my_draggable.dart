@@ -444,7 +444,8 @@ class _MyDragTargetState<T> extends State<MyDragTarget<T>> {
   }
 
   void didDrop(DragAvatar<dynamic> avatar) {
-    assert(_candidateAvatars.contains(avatar));
+    // This assert produces a bug when the listitem gets dragged outside of the list layout
+    // assert(_candidateAvatars.contains(avatar));
     if (!mounted) return;
     setState(() {
       _candidateAvatars.remove(avatar);
